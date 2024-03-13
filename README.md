@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather App
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+This weather App is a simple application built with Next.js that allows users to search for current weather information by city. Utilising the WeatherAPI, it displays temperature, humidity, wind speed, and location data.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Approach
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The development approach focused on simplicity, modularity, and usability. The application is structured into components, each with a distinct responsibility, promoting reusability and maintainability.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Components
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Search**: A form component allowing users to input a city name and submit a search request.
+- **WeatherData**: Displays the weather information. It renders differently based on the availability of data, ensuring a good user experience even when no data is present.
+- **API Integration**: The `fetchWeather` function abstracts the API request, encapsulating the logic for fetching weather data and handling errors.
 
-## Learn More
+### State Management
 
-To learn more about Next.js, take a look at the following resources:
+The application uses React's `useState` hook for local state management, sufficient for the app's scale and complexity. This approach keeps the component re-rendering logic straightforward and efficient.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Decision Making
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Next.js for SSR and SEO**: Next.js was chosen for its server-side rendering capabilities, enhancing the app's performance and search engine optimisation.
+- **Axios for API Calls**: Axios is used for its simplicity and wide adoption in making HTTP requests. Its promise-based API integrates seamlessly with async/await syntax for readability.
+- **Environmental Variables**: API keys are stored in environmental variables (`NEXT_PUBLIC_WEATHER_API_KEY`) to enhance security and configurability.
 
-## Deploy on Vercel
+## Considerations for a Real-World App
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+While the application meets the basic requirements, several enhancements could be made for real-world use:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Error Handling**: Improve user feedback on errors, potentially using a notification system or more detailed error messages to enhance user experience.
+- **Loading State**: Introduce a more interactive loading indicator or skeleton screens for a smoother experience during data fetching.
+- **Responsive Design**: Further improve the UI and UX for different devices and screen sizes, ensuring accessibility and usability.
+- **Testing**: Expand testing coverage to include integration and end-to-end tests, ensuring reliability and robustness.
+- **Feature Expansion**: Add more features like forecast information, weather maps, or user preferences for units (Celsius vs. Fahrenheit).
+- **Rate Limiting and Caching**: Implement rate limiting and response caching strategies to optimize API usage and improve performance.
