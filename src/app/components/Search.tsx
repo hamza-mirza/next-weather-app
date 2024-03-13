@@ -29,6 +29,7 @@ const Search = ({ onSearch }: Props) => {
         <button
           className="absolute right-0 top-0"
           type="submit"
+          aria-label="Search"
         >
           &#128269;
         </button>

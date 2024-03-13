@@ -10,25 +10,10 @@ export const fetchWeather = async (city: string) => {
     const response = await axios.get(url)
     return response.data
   } catch (error) {
-    throw error
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data.message || 'Failed to fetch weather data')
+    } else {
+      throw new Error('An unexpected error occurred')
+    }
   }
 }
-
-/*
-
- <div className="flex items-center justify-center">
-            <h2>Popular Cities</h2>
-            <ul>
-              {popularCities.map((city, index) => (
-                <li
-                  key={index}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => handleSearch(city.name)}
-                >
-                  {city.name}, {city.country}
-                </li>
-              ))}
-            </ul>
-          </div> 
-
-          */

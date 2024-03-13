@@ -6,18 +6,12 @@ import Search from './components/Search'
 import WeatherData, { WeatherInfo } from './components/WeatherData'
 import { fetchWeather } from './api/api'
 
-const popularCities = [
-  { name: 'New York', country: 'USA' },
-  { name: 'London', country: 'UK' },
-  { name: 'Tokyo', country: 'Japan' },
-  { name: 'Paris', country: 'France' },
-  { name: 'Sydney', country: 'Australia' }
-]
-
 const Home: NextPage = () => {
   const [weather, setWeather] = useState<WeatherInfo | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSearch = async (city: string) => {
+    setError(null)
     try {
       const data = await fetchWeather(city)
       setWeather({
@@ -30,6 +24,11 @@ const Home: NextPage = () => {
     } catch (error) {
       console.error('Failed to fetch weather data', error)
       setWeather(null)
+      if (error instanceof Error) {
+        setError(error.message)
+      } else {
+        setError('Failed to fetch weather data')
+      }
     }
   }
 
@@ -39,7 +38,7 @@ const Home: NextPage = () => {
         <div className="text-center w-full">
           <h1 className="text-3xl mb-12">Weather App</h1>
           <Search onSearch={handleSearch} />
-          <WeatherData weather={weather} />
+          {error ? <div className="text-red-500">{error}</div> : <WeatherData weather={weather} />}
         </div>
       </div>
     </div>
