@@ -5,7 +5,7 @@ import axios from 'axios'
 const API_BASE_URL = 'https://api.weatherapi.com/v1/current.json'
 
 export const fetchWeather = async (city: string) => {
-  const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY // API key for WeatherAPI, stored in environment variables for security
+  const apiKey = 'cefc3c3ee56347e3b4a14451241103'
   const url = `${API_BASE_URL}?key=${apiKey}&q=${city}&aqi=no` // Constructing URL with query parameters
 
   try {
