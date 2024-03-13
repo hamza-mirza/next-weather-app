@@ -13,3 +13,22 @@ export const fetchWeather = async (city: string) => {
     throw error
   }
 }
+
+/*
+
+ <div className="flex items-center justify-center">
+            <h2>Popular Cities</h2>
+            <ul>
+              {popularCities.map((city, index) => (
+                <li
+                  key={index}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handleSearch(city.name)}
+                >
+                  {city.name}, {city.country}
+                </li>
+              ))}
+            </ul>
+          </div> 
+
+          */

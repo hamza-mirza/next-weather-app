@@ -13,15 +13,26 @@ const Search = ({ onSearch }: Props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={city}
-        onChange={e => setCity(e.target.value)}
-        placeholder="Enter city name"
-        required
-      />
-      <button type="submit">Search</button>
+    <form
+      className="mb-16 flex justify-center items-center"
+      onSubmit={handleSubmit}
+    >
+      <div className="w-full relative lg:w-4/12 mx-auto">
+        <input
+          className="border-b border-gray-800 pb-2 w-full block"
+          type="text"
+          value={city}
+          onChange={e => setCity(e.target.value)}
+          placeholder="Enter city name"
+          required
+        />
+        <button
+          className="absolute right-0 top-0"
+          type="submit"
+        >
+          &#128269;
+        </button>
+      </div>
     </form>
   )
 }
